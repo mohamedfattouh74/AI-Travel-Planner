@@ -13,13 +13,13 @@ export default function InputField({label,placeholder,control,isPassword=false,e
                         <TextInput
                         className='rounded-lg border border-black p-4 w-full'
                         placeholder={placeholder}
-                        value={value}
+                        value={value ?? ''}
                         onChangeText={onChange}
                         onBlur={onBlur} 
                         secureTextEntry={isPassword}/>
                     }
                 />
-                {errors.label && <Text>{errors.label.message}</Text>}
+            {errors && errors[label] && <Text className='text-red-700 mt-1 ml-1'>{errors[label].message}</Text>}
                 
         </View>
     )
