@@ -1,8 +1,10 @@
+import { useTrip } from "@/contexts/TripContext";
 import { useRouter } from "expo-router";
 import { View , Text , Image , StyleSheet, TouchableOpacity} from "react-native";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default function LandingPage(){
+
 
     const router = useRouter();
     return (

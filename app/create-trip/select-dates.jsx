@@ -3,6 +3,7 @@ import { TouchableOpacity, Text, View, ToastAndroid } from "react-native";
 import { useEffect, useState } from "react";
 import CalendarPicker from "react-native-calendar-picker";
 import moment from 'moment'
+import { useTrip } from "../../contexts/TripContext";
 
 export default function SelectDates(){
 
@@ -10,11 +11,18 @@ export default function SelectDates(){
     const router = useRouter();
     const [startDate,setStartDate]=useState()
     const [endDate,setEndDate]=useState()
+    const {tripData,setTripData} = useTrip();
+
+    useEffect(()=>{
+        setTripData({...tripData,startDate:startDate,endDate:endDate})
+    },[startDate,endDate])
 
     function onDateChange(date,type){
         if(type=='START_DATE') setStartDate(moment(date));
         if(type=='END_DATE') setEndDate(moment(date));
     }
+
+    
 
     function onDateSelectionContinue(){
         if(!startDate && !endDate) {
@@ -22,7 +30,7 @@ export default function SelectDates(){
             return;
         }
         const totalNoOfDays = endDate.diff(startDate,'days')
-        console.log(totalNoOfDays+1); // we need to add 1 as the max range duration allows us to add number +1
+        setTripData({...tripData,totalNoOfDays:totalNoOfDays+1}) // we need to add 1 as the max range duration allows us to add number +1
         router.push('/create-trip/select-budget') 
     }
 

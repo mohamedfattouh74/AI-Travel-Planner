@@ -3,12 +3,15 @@ import { useEffect, useState } from "react";
 import { View , Text , FlatList , TouchableOpacity, ToastAndroid} from "react-native";
 import { travelOptions } from "../../constants/travel-options";
 import { TravelOptionCard } from "../../components/TravelOptionCard";
+import { useTrip } from "../../contexts/TripContext";
 
 export default function SelectTraveler(){
 
     const navigation = useNavigation();
     const router= useRouter();
     const [currentSelection,setCurrentSelection]=useState({})
+    const {tripData,setTripData} = useTrip();
+
 
     useEffect(()=>{
         navigation.setOptions({
@@ -17,6 +20,10 @@ export default function SelectTraveler(){
             headerTitle:''
         })
     },[])
+
+    useEffect(()=>{
+        setTripData({...tripData,travellingPeople:currentSelection.item})
+    },[currentSelection])
 
     function onOptionSelectionContinue(){
         if(!currentSelection.item) {

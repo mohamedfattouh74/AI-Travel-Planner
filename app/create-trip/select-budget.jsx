@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { View , Text , FlatList , TouchableOpacity, ToastAndroid} from "react-native";
 import { budgetOptions } from "../../constants/budget-options";
 import { TravelOptionCard } from "../../components/TravelOptionCard";
+import { useTrip } from "../../contexts/TripContext";
 
 export default function SelectBudget(){
 
@@ -10,7 +11,8 @@ export default function SelectBudget(){
     const router= useRouter();
     const [currentSelection,setCurrentSelection]=useState({})
 
-
+    const {tripData,setTripData} = useTrip();
+    console.log(tripData)
     useEffect(()=>{
         navigation.setOptions({
             headerShown:true,
@@ -19,10 +21,17 @@ export default function SelectBudget(){
         })
     },[])
 
+    useEffect(()=>{
+        setTripData({...tripData,budget:currentSelection.item})
+    },[currentSelection])
+
     function onBudgetSelectionContinue(){
         if(!currentSelection.item) {
             ToastAndroid.show('Please select budget', ToastAndroid.LONG);
             return;
+        }
+        else{
+            router.push('/create-trip/review-trip')
         }
     }
 
