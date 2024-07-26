@@ -26,12 +26,12 @@ export default function SignUp(){
         <View className='pt-24 px-6'>
             <Ionicons name="arrow-back" size={24} color={'black'} onPress={()=>router.back()}/>
             <Text className='font-bold text-3xl text-neutral-800 mt-4'>Create New Account</Text>            
-            <View className='mt-16'>
+            <View className='mt-8'>
                 <InputField label={'fullname'} placeholder={'Enter full name'} control={control} errors={errors}/>
                 <InputField label={'email'} placeholder={'Enter email address'} control={control} errors={errors}/>
                 <InputField label={'password'} placeholder={'Enter password'} control={control} isPassword={true} errors={errors}/>
             </View>
-            <View className='flex justify-center items-center mt-12'>
+            <View className='flex justify-center items-center mt-24'>
                 <TouchableOpacity className='bg-black py-4 px-28 rounded-full' onPress={handleSubmit(submitForm)}>
                     <Text className='text-white font-medium'>Create Account</Text>
                 </TouchableOpacity>

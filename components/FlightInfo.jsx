@@ -17,7 +17,7 @@ export default function FlightInfo({flightData}){
 
             <Text><Text className='font-semibold'>Airline: </Text>{flightData?.details?.airline} </Text>
             <Text><Text className='font-semibold'>Class: </Text> {flightData?.details?.flight_class} </Text>
-            <Text className='font-bold'> {flightData?.price} </Text>
+            <Text className='font-bold'>{flightData?.price} </Text>
 
         </View>
     )

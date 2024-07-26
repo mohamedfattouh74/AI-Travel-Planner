@@ -16,6 +16,7 @@ export default function MyTrip(){
     const [userTrips , setUserTrips] = useState([]);
     const [isLoading,setIsLoading]=useState(false);
     const user =auth.currentUser;
+    
 
 
     useEffect(()=>{

@@ -31,12 +31,12 @@ export default function SignIn(){
             <Text className='font-bold text-3xl text-neutral-800 mt-4'>Let's Sign You In</Text>
             <Text className='text-neutral-600 text-xl mt-4'>Welcome Back</Text>
             <Text className='text-neutral-600 text-xl mt-4'>You've been missed!</Text>
-            <View className='mt-16'>
+            <View className='mt-8'>
                 <InputField label={'email'} placeholder={'Enter email address'} control={control} errors={errors}/>
                 <InputField label={'password'} placeholder={'Enter password'} control={control} isPassword={true} errors={errors}/>
             </View>
 
-            <View className='flex justify-center items-center mt-12'>
+            <View className='flex justify-center items-center mt-24'>
                 <TouchableOpacity className='bg-black py-4 px-36 rounded-full' onPress={handleSubmit(submitForm)}>
                             <Text className='text-white font-medium'>Sign In</Text>
                 </TouchableOpacity>

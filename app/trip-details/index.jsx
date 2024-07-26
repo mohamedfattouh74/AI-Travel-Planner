@@ -6,12 +6,24 @@ import FlightInfo from "../../components/FlightInfo";
 import HotelList from "../../components/HotelList";
 import PlannedTrip from "../../components/PlannedTrip";
 import { ScrollView } from "react-native-gesture-handler";
+import { fetchImage } from "../../services/unsplashImages";
+import { ActivityIndicator } from "react-native";
 
 export default function TripDetails(){
 
     const navigation = useNavigation();
     const {trip} = useLocalSearchParams();
     const [tripDetails,setTripDetails]=useState();
+
+    const [imageURL,setImageURL] = useState();
+    console.log(trip)
+
+    useEffect(()=>{
+        fetchImage(tripDetails?.tripPlan?.trip?.destination).then(data=>{
+            console.log(data)
+            setImageURL(data.results[0].urls.regular)
+        });
+    },[tripDetails])
 
     const formatData=(data)=>{
         return JSON.parse(data);
@@ -36,10 +48,10 @@ export default function TripDetails(){
             
         <ScrollView>
             <View>
-                <Image className='w-full h-72' source={{uri:`https://via.placeholder.com/900x450?text=${tripDetails.tripPlan?.trip?.destination}`}}/>
+                {tripDetails ? <Image className='w-full h-72' source={{uri:imageURL}}/>: <ActivityIndicator color={'black'} size={34}/>}
             </View>
             <View className='bg-white -mt-4 rounded-t-[30px] flex-1 p-4'>
-                <Text className='text-lg text-neutral-800 font-bold'>{tripDetails.tripPlan?.trip?.destination}</Text>
+                <Text className='text-lg text-neutral-800 font-bold'>{tripDetails?.tripPlan?.trip?.destination}</Text>
                 <View className='flex flex-row items-center gap-2'>
                     <Text className='text-neutral-500 font-semibold'>{moment(formatData(tripDetails?.tripData).startDate).format('DD MMM yyyy')}</Text>
                     <Text className='text-neutral-500 font-semibold'>{moment(formatData(tripDetails?.tripData).endDate).format('DD MMM yyyy')}</Text>

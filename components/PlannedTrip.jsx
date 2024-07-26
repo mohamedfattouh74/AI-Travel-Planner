@@ -24,14 +24,13 @@ export default function PlannedTrip({details}){
             <Text className='text-lg text-neutral-800 font-bold'>🌄 Plan Details</Text>
 
             {activitiesByDate && Object.entries(activitiesByDate).map(([day, details]) => (
-            <View key={day}>
-                <Text className='text-neutral-800 text-lg font-semibold'>{day}</Text>
+            <View key={day} className='my-1'>
+                <Text className='text-neutral-800 text-xl font-bold my-2'>{day}</Text>
                 {details.map((activity, index) => (
-                    <View key={index}>
-                        <Text>{activity.activity}</Text>
-                        <Text>{activity.best_time_to_visit}</Text>
-                        <Text>{activity.location}</Text>
-                        <Text>{activity.time}</Text>
+                    <View key={index} className='mb-1'>
+                        <Text className='text-lg font-semibold'>{activity.time}</Text>
+                        <Text className='my-1 font-medium'>{activity.activity}</Text>
+                        <Text className='text-neutral-500'>{activity.best_time_to_visit}</Text>
                     </View>
                 ))}
             </View>
