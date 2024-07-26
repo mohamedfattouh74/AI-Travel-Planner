@@ -26,7 +26,7 @@ export default function UserTripCard({trip}){
                 <Image className='w-32 h-32 rounded-lg object-cover' source={{uri:imageURL}}/>
              <View>
                 <Text className='text-lg text-neutral-800 font-bold'>{trip?.tripPlan?.trip?.destination}</Text>
-                <Text className='text-neutral-500 font-semibold'>{moment(tripData.startDate).format('DD MMM yyyy')}</Text>
+                <Text className='text-neutral-500 font-semibold my-1'>{moment(tripData.startDate).format('DD MMM yyyy')}</Text>
                 <Text className='text-neutral-500 font-semibold'>Traveling: {tripData?.travellingPeople?.title}</Text>
              </View>
             </View>

@@ -1,5 +1,5 @@
 import moment from "moment";
-import { Image, Text, View  , TouchableOpacity } from "react-native";
+import { Image, Text, View  , TouchableOpacity , ScrollView} from "react-native";
 import UserTripCard from "./UserTripCard";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
@@ -34,9 +34,12 @@ export default function UserTripList({userTrips}){
                     </TouchableOpacity>
                 </View>
 
+                <ScrollView showsVerticalScrollIndicator={false} className='flex-1 mt-4 mb-24'>
+
                 {
                     userTrips.map((trip,index)=><UserTripCard trip={trip} key={index}/>)
                 } 
+                </ScrollView>
         
 
             </View>

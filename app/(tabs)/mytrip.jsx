@@ -35,7 +35,7 @@ export default function MyTrip(){
     }
 
     return (
-        <ScrollView className='px-8 pt-20 flex-1'>
+        <View className='px-8 pt-20 flex-1'>
             <View className='flex flex-row justify-between items-center'>
                 <Text className='text-3xl font-bold text-neutral-800'>My Trips</Text>
                 <TouchableOpacity onPress={()=>{router.push('/create-trip/search-place')}}>
@@ -45,7 +45,6 @@ export default function MyTrip(){
             <View className='flex-1'>
                 {isLoading ? <ActivityIndicator className='flex-1 items-center justify-center' size={'large'} color={'black'}/> : userTrips.length == 0 ? <StartNewTripCard/>: <UserTripList userTrips={userTrips}/>}
             </View>
-
-        </ScrollView>
+        </View>
     )
 }
