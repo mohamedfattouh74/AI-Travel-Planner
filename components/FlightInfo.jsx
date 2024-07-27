@@ -14,11 +14,9 @@ export default function FlightInfo({flightData}){
                     <Text className='text-white font-medium text-center'>Book Here</Text>
             </TouchableOpacity>
             </View>
-
             <Text><Text className='font-semibold'>Airline: </Text>{flightData?.details?.airline} </Text>
             <Text><Text className='font-semibold'>Class: </Text> {flightData?.details?.flight_class} </Text>
-            <Text className='font-bold'>{flightData?.price} </Text>
-
+            <Text><Text className='font-semibold'>Price: </Text> {flightData?.price}  </Text>
         </View>
     )
 
